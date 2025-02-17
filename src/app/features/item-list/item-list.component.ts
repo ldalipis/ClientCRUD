@@ -15,6 +15,7 @@ import { ConfirmDialogComponent } from '../../shared/components/confirm-dialog/c
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateDialogComponent } from '../../shared/components/update-dialog/update-dialog.component';
 import { MatToolbar } from '@angular/material/toolbar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-item-list',
@@ -40,8 +41,9 @@ export class ItemListComponent {
   displayedColumns: string[] = ['id', 'address', 'description', 'actions'];
   dataSource: MatTableDataSource<UnifiedRequestModel> | null = null;
 
-  private itemService = inject(ItemService);
-  private dialog = inject(MatDialog);
+  private readonly itemService = inject(ItemService);
+  private readonly dialog = inject(MatDialog);
+  private readonly router = inject(Router);
 
   items = signal<UnifiedRequestModel[]>([]);
 
@@ -57,6 +59,10 @@ export class ItemListComponent {
     this.itemService.getAllItems().subscribe((data) => {
       this.items.set(data);
     });
+  }
+
+  viewItem(id: string): void {
+    this.router.navigate([`item/${id}`]);
   }
 
   createItem(): void {

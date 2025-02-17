@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ItemService {
-  private baseUrl = 'https://localhost:7293/items';
-  private http = inject(HttpClient);
+  private readonly baseUrl = 'https://localhost:7293/items';
+  private readonly http = inject(HttpClient);
 
   getAllItems(): Observable<UnifiedRequestModel[]> {
     return this.http.get<UnifiedRequestModel[]>(`${this.baseUrl}`);

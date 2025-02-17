@@ -13,7 +13,7 @@ const config: Config = {
   // bail: 0,
 
   // The directory where Jest should store its cached dependency information
-  // cacheDirectory: "C:\\Users\\achau\\AppData\\Local\\Temp\\jest",
+  // cacheDirectory: "C:\\Users\\lefteris\\AppData\\Local\\Temp\\jest",
 
   // Automatically clear mock calls, instances, contexts and results before every test
   clearMocks: true,
@@ -195,7 +195,7 @@ const config: Config = {
   // Whether to use watchman for file crawling
   // watchman: true,
   preset: 'jest-preset-angular',
-  setupFilesAfterEnv: ['./setup-jest.ts'],
+  setupFilesAfterEnv: ['<rootDir>/setup-jest.ts'],
 };
 
 export default config;

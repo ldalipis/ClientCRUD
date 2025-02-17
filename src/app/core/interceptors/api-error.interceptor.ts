@@ -10,11 +10,6 @@ export const apiErrorInterceptor: HttpInterceptorFn = (
   const errorHandler = inject(ErrorHandlerService);
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
-      if (error.error && error.error.type === 'ApiException') {
-        console.error('API Exception:', error.error);
-      } else {
-        console.error('HTTP Error:', error);
-      }
       errorHandler.handleError(error);
       return throwError(() => error);
     }),

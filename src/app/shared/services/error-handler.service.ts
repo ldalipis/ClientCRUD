@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root'
 })
 export class ErrorHandlerService {
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(private readonly snackBar: MatSnackBar) {}
 
   // Generic error handler method
   handleError(error: HttpErrorResponse | Error): Observable<never> {
@@ -34,7 +34,6 @@ export class ErrorHandlerService {
   }
 
   private getServerErrorMessage(error: HttpErrorResponse): string {
-    console.log(error)
     switch (error.status) {
       case 404: {
         return `Not Found: ${error.message}`;
